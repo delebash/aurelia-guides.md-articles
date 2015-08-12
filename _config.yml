@@ -1,10 +1,15 @@
 name: Aurelia-Guides Blogs
-description: Articles describing how to create and build Aurelia Applications, written by members of Aurelia Community
-
-url: http://aurelia-guides.github.io
-
+description:     Articles describing how to create and build Aurelia Applications
 paginate: 10
-
 markdown: rdiscount
 permalink: pretty
-pygments: true
+highlighter: pygments
+
+logo:             logo.png
+disqus_shortname: # register a disqus account if you want to enable comments
+
+# Analytics and webmaster tools stuff goes here
+google_analytics:
+google_verify:
+# https://ssl.bing.com/webmaster/configure/verify/ownership Option 2 content= goes here
+bing_verify:
