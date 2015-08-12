@@ -1,0 +1,10 @@
+name: Aurelia-Guides Blogs
+description: Articles describing how to create and build Aurelia Applications, written by members of Aurelia Community
+
+url: http://aurelia-guides.github.io
+
+paginate: 10
+
+markdown: rdiscount
+permalink: pretty
+pygments: true
