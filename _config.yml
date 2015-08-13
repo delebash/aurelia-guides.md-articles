@@ -1,5 +1,5 @@
 name: Aurelia-Guides Blogs
-description:     Guide to build Aurelia Applications
+description: Community authored Guides to build Aurelia Applications
 paginate: 10
 markdown: rdiscount
 permalink: pretty
