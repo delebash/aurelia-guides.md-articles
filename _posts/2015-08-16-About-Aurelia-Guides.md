@@ -10,7 +10,7 @@ categories: # feel free to add categories
 
 ![](http://i.imgur.com/n7c6c0X.png)
 
-### Aurelia-Guides tasks
+## Aurelia-Guides tasks
 
 The purpose of the Aurelia-Guides project is to collect and organize all Aurelia related information **that is not included** in the [Aurelia official documentation](http://aurelia.io/docs.html). Since this is a dynamic definition, the following few paragraphs try to refine it, with the goal to collect as valuable information as possible, with the least amount of redundancy, overlaps with official documentation and maximum accessibility. This last attribute _maximum accessibility_ is the area where we expect to offer some **innovation**, introduced [here](https://github.com/aurelia-guides/aurelia-guides.github.io/wiki/Data-Collection-and-Organization-Process#code--data-snippets).
 
@@ -28,6 +28,7 @@ The purpose of the Aurelia-Guides project is to collect and organize all Aurelia
 ### How to collect
 
 ##### Blog posts
+
 In order to ensure that **Blog posts** are of interest to many, and cover all areas of interest, without too much overlap, I propose the following process for each author of the post:
 - Create the entry in the [issues section](https://github.com/aurelia-guides/aurelia-guides.github.io/issues) named ```blog post proposal: <blog post name>```. Use the Comments section of this issue to explain more details about the post you want to write
 - Someone from the set of editors (humans, not a piece of software) will regularly scan this issues section and ensure that the proposal is "in line" with the expectations we have about the content of this site and state his / her approval in that Comments Section.
