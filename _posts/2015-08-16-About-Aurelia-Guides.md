@@ -6,7 +6,7 @@ comments: true # this only matters if you have disqus comments enabled in your _
 categories: # feel free to add categories
 ---
 
-**Aurelia-Guides** is a collection of documents written by a team of Aurelia Enhusiasts, consisting mostly from Aurelia early adopters and a few members of Aurelia core development team. The documents in Aurelia-Guides "live independent life" from Aurelia's official documentation set, it is expected that some (or more) of Aurelia-Guides documents will find their way to become official.
+**Aurelia-Guides** is a collection of documents written by a team of Aurelia Enhusiasts, consisting mostly from Aurelia early adopters and a few members of Aurelia core development team. The documents in Aurelia-Guides "live independent life" from Aurelia's official documentation set, it is expected that some (or more) of Aurelia-Guides documents will find their way to become official (_can this be perceived as the motivation to create world class contributions to this project :-) ?_)
 
 ![](http://i.imgur.com/n7c6c0X.png)
 
