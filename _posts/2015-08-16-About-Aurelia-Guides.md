@@ -5,7 +5,7 @@ date: 2015-08-16 # Change this here and in the filename
 comments: true # this only matters if you have disqus comments enabled in your _config.yml file
 categories: # feel free to add categories
 ---
-Aurelia-Guides
+Aurelia-Guides is a collection of documents written by a team of Aurelia Enhusiasts, consisting mostly from Aurelia early adopters and a few members of Aurelia core team members. The documents in Aurelia-Guides "live independent life" from Aurelia's official documentation set, it is expected that some (or more) of Aurelia-Guides documents will find their way to become official.
 
 ![](http://i.imgur.com/n7c6c0X.png)
 
