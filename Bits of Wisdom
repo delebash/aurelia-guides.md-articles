@@ -1,0 +1,73 @@
+#### Summary
+
+This article is a collection of brief explanations / advices of lot less depth than you could find at [http://blog.durandal.io/2015/02/03/aurelia-qa/](http://blog.durandal.io/2015/02/03/aurelia-qa/) for example. This comes as the consequence that Aurelia Guides is the resource written by Aurelia Developers for Aurelia Developers and its purpose is to **augment** -- **not replace** [Aurelia official documentation](http://aurelia.io/docs.html).
+
+* * *
+
+#### 1. JSPM fails to find the npm module I need.
+
+Few days back, I wanted to create a sample of an Aurelia application which uses **[Stormpath Authentication and Authorization services](http://stormpath.com)**  (this sample is a part of a larger **[Aurelia Security Services](http://blog.aurelia-guides.com/category/security/)** article still under development).
+
+As I prefer to start &quot;from scratch&quot; in the &quot;experiment phase&quot;, I took the approach described in the document [Smallest Aurelia Application - created from scratch](http://blog.aurelia-guides.com/2015/08/22/smallest-aurel…d-from-scratch). **Knowing** that I need [Official Stormpath SDK for Node.js](https://www.npmjs.com/package/stormpath) library, distributed via **[npm](https://www.npmjs.com/)**, and knowing further that I have to use  **[jspm](http://jspm.io/)** (package manager for [System.js module loader](https://github.com/systemjs/systemjs)) to load a package from npm registry into the Aurelia **[ES6](http://es6-features.org/)** world, the thing to do is simple
+
+1.  Create my &quot;[Smallest Aurelia Application](http://blog.aurelia-guides.com/2015/08/22/smallest-aurel…d-from-scratch)&quot;.
+2.  Run `jspm install stormpath`
+
+Well, instead of getting my app configured to have the access to Stormpath module, I got this:
+
+    λ jspm install stormpath
+
+    warn Running jspm globally, it is advisable to locally install jspm via npm install jspm --save-dev.
+
+    Package.json file does not exist, create it? [yes]:y
+    Would you like jspm to prefix the jspm package.json properties under jspm? [yes]:y
+    Enter server baseURL (public folder path) [./]:y
+    Enter jspm packages folder [y\jspm_packages]:y
+    Enter config file path [y\config.js]:y
+    Configuration file y doesn&amp;amp;#39;t exist, create it? [yes]:
+    Enter client baseURL (public folder URL) [/]:
+    Do you wish to use an ES6 transpiler? [yes]:
+    Which ES6 transpiler would you like to use, Babel or Traceur? [babel]:
+         Updating registry cache...
+
+    err  Repo jspm:stormpath not found!
+
+    warn Installation changes not saved.
+    `&amp;lt;/pre&amp;gt;
+
+    Does npm registry contain stormpath module? Yes, of course - as shown below
+
+    &amp;lt;pre&amp;gt;`λ npm install stormpath
+    stormpath@0.10.2 node_modules\stormpath
+    ├── njwt@0.0.1
+    ├── jwt-simple@0.2.0
+    ├── flat@1.6.0
+    ├── deep-extend@0.4.0
+    ├── underscore@1.5.2
+    ├── async@0.7.0
+    ├── node-uuid@1.4.3
+    ├── redis@0.12.1
+    ├── properties-parser@0.2.3
+    ├── underscore.string@2.3.3
+    ├── glob@3.2.11 (inherits@2.0.1, minimatch@0.3.0)
+    ├── request@2.40.0 (forever-agent@0.5.2, aws-sign2@0.5.0, stringstream@0.0.4, oauth-sign@0.3.0, tunnel-agent@0.4.1, json-stringify-safe@5.0.1, qs@1.0.2, mime-types@1.0.2, form-data@0.1.4, http-signature@0.10.1, tough-cookie@2.0.0, hawk@1.1.1)
+    ├── moment@2.8.4
+    └── memcached@0.2.8 (hashring@0.0.8, jackpot@0.0.6)
+
+**So, what is the conclusion here? **
+
+jspm is the new kid on the block, designed to bring modules from npm registry to ES6 world. npm was designed without this concept in mind, so in order for jspm to be able to find npm resident modules, they need to be &quot;repackaged&quot; to include support needed by jspm to correctly retrieve these modules (see Jack Franklin&#39;s [great article](http://javascriptplayground.com/blog/2014/11/js-modules-jspm-systemjs/) that explains the details).
+
+**My take**: not all modules in npm registry are correctly upgraded to &quot;work&quot; with jspm. In this case I issued a problem report to Stormpath.
+
+* * *
+
+#### 2. Should I write my apps using TypeScript or ES6?
+
+See the **[answer](http://blog.durandal.io/2015/05/06/getting-started-with-aurelia-and-typescript/)** provided by **Mike Graham**, introduced by **Rob Eisenberg**
+
+After reading this blog post and being concerned about the all popular view that only TypeScript will prevent you from digging yourself a hole too deep to bail yourself out of - I asked Mike this same question in the context of &quot;my app will be too big to be written JavaScript&quot; issue.
+
+&quot;Stay with ES6 if you are comfortable with it&quot; - was Mike&#39;s brief reply and I knew that he was pointing out that ES6 is a very different animal from today&#39;s ES5. So, at least for now, I am staying with ES6 :-)
+
+* * *
