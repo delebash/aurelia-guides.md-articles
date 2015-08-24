@@ -1,0 +1,153 @@
+This article is credited to **[Scott Allen](http://odetocode.com/about/scott-allen)** and **[Jeremy Danyow](http://www.danyow.net/)** - they both taught me how to use [jspm package manager](http://jspm.io/) to create the &quot;Hello World - size&quot; Aurelia application. I want to include it in Aurelia-Guides repository so we can use it as a basic building block in the larger samples.
+
+**Caveat**: This approach to to create Aurelia Application is not &quot;scholarly&quot; as it skips creation and use of many important parts of application&#39;s rigging - see **[starter kit for building a standard navigation-style app with Aurelia](https://github.com/aurelia/skeleton-navigation)** for all these details.
+
+* * *
+
+Assuming that all components of Aurelia Development Environment (see **[this](http://blog.aurelia-guides.com/2015/08/22/aurelia-develo…ment-and-tools/)** for more details) are in place, create the folder for this project:
+
+    mkdir minimal
+    cd minimal
+    `</pre>
+
+    Now, let&#39;s start with **jspm** and to create the initial skeleton
+
+    <pre>`jspm init
+    `</pre>
+
+    This command results with following (note the warning - it&#39;s a smart thing to heed at least until **jspm** becomes production version so we do not need to worry about using the beta jspm.
+
+    <pre>`warn Running jspm globally, it is advisable to locally install jspm via npm install jspm --save
+    -dev.                                                                                          
+    Package.json file does not exist, create it? [yes]:                                            
+    Would you like jspm to prefix the jspm package.json properties under jspm? [yes]:              
+    Enter server baseURL (public folder path) [./]:                                                
+    Enter jspm packages folder [.\jspm_packages]:                                                  
+    Enter config file path [.\config.js]:                                                          
+    Configuration file config.js doesn&amp;#39;t exist, create it? [yes]:                                  
+    Enter client baseURL (public folder URL) [/]:                                                  
+    Do you wish to use an ES6 transpiler? [yes]:                                                   
+    Which ES6 transpiler would you like to use, Babel or Traceur? [babel]:                         
+    ok   Verified package.json at package.json                                                     
+         Verified config file at config.js                                                         
+         Looking up loader files...                                                                
+           system.js                                                                               
+           system-csp-production.js                                                                
+           system.js.map                                                                           
+           system.src.js                                                                           
+           system-polyfills.js                                                                     
+           system-polyfills.js.map                                                                 
+           system-csp-production.js.map                                                            
+           system-csp-production.src.js                                                            
+           system-polyfills.src.js                                                                 
+
+         Using loader versions:                                                                    
+           systemjs@0.18.9                                                                         
+         Looking up npm:babel-core                                                                 
+         Looking up npm:babel-runtime                                                              
+         Looking up npm:core-js                                                                    
+         Updating registry cache...                                                                
+         Looking up github:jspm/nodelibs-process                                                   
+    ok   Installed babel as npm:babel-core@^5.8.21 (5.8.22)                                        
+    ok   Installed github:jspm/nodelibs-process@^0.1.0 (0.1.1)                                     
+         Looking up npm:process                                                                    
+    ok   Installed npm:process@^0.10.0 (0.10.1)                                                    
+    ok   Installed babel-runtime as npm:babel-runtime@^5.8.20 (5.8.20)                             
+         Looking up github:jspm/nodelibs-fs                                                        
+         Looking up github:systemjs/plugin-json                                                    
+    ok   Installed github:jspm/nodelibs-fs@^0.1.0 (0.1.2)                                          
+    ok   Installed github:systemjs/plugin-json@^0.1.0 (0.1.0)                                      
+    ok   Installed core-js as npm:core-js@^1.0.0 (1.1.1)                                           
+    ok   Loader files downloaded successfully                                                      
+    `</pre>
+
+    This single command (note that we accepted all of the defaults offered) results with the minimal project structure shown below:
+
+      ![](http://i.imgur.com/jMFZG20.png)</img>
+
+    The highlighted sections of this image denote all EM6 related components that `jspm init` command created
+
+    Now, let us add Aurelia - meaning at least `aurelia-framework` and `aurelia-bootstrapper` packages need to be added to our application
+
+    <pre>`jspm install aurelia-framework
+    jspm install aurelia-bootstrapper
+    `</pre>
+
+    Having the complete minimal infrastructure for Aurelia in place let&#39;s build our &quot;Hello World&quot; application itself.
+
+    Create the `index.html` file that will invoke the SystemJS module loader:
+
+    <pre>`&lt;!doctype html&gt;
+    &lt;html&gt;
+      &lt;head&gt;
+        &lt;title&gt;Aurelia&lt;/title&gt;
+      &lt;/head&gt;
+      &lt;body aurelia-app&gt;
+        &lt;h1&gt;Loading...&lt;/h1&gt;
+
+        &lt;script src=&quot;jspm_packages/system.js&quot;&gt;&lt;/script&gt;
+        &lt;script src=&quot;config.js&quot;&gt;&lt;/script&gt;
+        &lt;script&gt;
+          System.import(&#39;aurelia-bootstrapper&#39;);
+        &lt;/script&gt;
+      &lt;/body&gt;
+    &lt;/html&gt;
+    `</pre>
+
+    By default, Aurelia Boostrap loader (`aurelia-bootstrapper`) expects the view model / view pair of files, named `app`
+
+    **app.js**
+
+    <pre>`export class App {
+      message = &#39;hello world&#39;;
+    }
+    `</pre>
+
+    **app.html**
+
+    <pre>`&lt;template&gt;
+      ${message}
+    &lt;/template&gt;
+    `</pre>
+
+    This is really everything needed for the minimal Aurelia application - however in order to be compliant with &quot;official Aurelia samples&quot;, we will also use two utilities
+
+    <pre>`npm install gulp
+    npm install browser-sync --save-dev
+    `</pre>
+
+    and provide the `gulpfile.js`
+
+    <pre>`var gulp = require(&#39;gulp&#39;);
+    var browserSync = require(&#39;browser-sync&#39;);
+
+    // this task utilizes the browsersync plugin
+    // to create a dev server instance
+    // at http://localhost:9000
+    gulp.task(&#39;serve&#39;, function(done) {
+      browserSync({
+        open: false,
+        port: 9000,
+        server: {
+          baseDir: [&#39;.&#39;],
+          middleware: function (req, res, next) {
+            res.setHeader(&#39;Access-Control-Allow-Origin&#39;, &#39;*&#39;);
+            next();
+          }
+        }
+      }, done);
+    });
+    `</pre>
+
+    Now, start the webserver using `gulp`
+
+    <pre>`gulp serve
+    `</pre>
+
+    and point the browser:
+
+    <pre>`http://localhost:9000
+
+ The complete project&#39;s structure is this:
+
+  ![](http://i.imgur.com/Gpgy5G8.png)</img>
