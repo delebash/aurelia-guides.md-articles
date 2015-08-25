@@ -34,7 +34,7 @@ Well, instead of getting my app configured to have the access to Stormpath modul
     
     warn Installation changes not saved.
     
-    Does npm registry contain stormpath module? Yes, of course - as shown below
+Does npm registry contain stormpath module? Yes, of course - as shown below
     
     λ npm install stormpath
     stormpath@0.10.2 node_modules\stormpath
@@ -53,12 +53,7 @@ Well, instead of getting my app configured to have the access to Stormpath modul
     ├── moment@2.8.4
     └── memcached@0.2.8 (hashring@0.0.8, jackpot@0.0.6)
     
-
-**So, what is the conclusion here? **
-
-jspm is the new kid on the block, designed to bring modules from npm registry to ES6 world. npm was designed without this concept in mind, so in order for jspm to be able to find npm resident modules, they need to be "repackaged" to include support needed by jspm to correctly retrieve these modules (see Jack Franklin's [great article][10] that explains the details).
-
-**My take**: not all modules in npm registry are correctly upgraded to "work" with jspm. In this case I issued a problem report to Stormpath.
+Why did  my search for stormpath fail? Well, sometimes it is good to read the documentation **very carefully**. Had I done this, I would know that instead of  ``jspm install stormpath`` I should have written ``jspm install npm:stormpath``
 
 * * *
 
@@ -83,3 +78,96 @@ After reading this blog post and being concerned about the all popular view that
  [9]: http://es6-features.org/
  [10]: http://javascriptplayground.com/blog/2014/11/js-modules-jspm-systemjs/
  [11]: http://blog.durandal.io/2015/05/06/getting-started-with-aurelia-and-typescript/
+
+####3. How to render different view structures in Aurelia?
+
+I have a common html structure in my app.html in order to apply for all pages:
+
+    <template>
+    <require from="header"></require>
+    <require from="side-bar"></require>
+    <require from="theme-panel"></require>
+    <require from="footer"></require>
+    <!-- BEGIN HEADER -->
+    <js-header></js-header>
+    <!-- END HEADER -->
+
+    <div class="clearfix"></div>
+
+    <!-- BEGIN CONTAINER -->
+    <div class="container">
+        <div class="page-container">
+            <!-- BEGIN SIDEBAR -->
+            <js-side-bar></js-side-bar>
+            <!-- END SIDEBAR -->
+            <div class="page-content-wrapper">
+                <div class="page-content">
+                    <!-- BEGIN STYLE CUSTOMIZER(optional) -->
+                    <js-theme-panel></js-theme-panel>
+                    <!-- END STYLE CUSTOMIZER -->
+                    <!-- BEGIN ACTUAL CONTENT -->
+                    <div class="fade-in-up">
+                        <router-view></router-view>
+                    </div>
+                    <!-- END ACTUAL CONTENT -->
+                </div>
+            </div>
+        </div>
+        <!-- BEGIN FOOTER -->
+        <js-footer></js-footer>
+        <!-- END FOOTER -->
+    </div>
+    <!-- END CONTAINER -->
+    </template>
+
+However, in my case, i have a login page with a totally different structure compared to others. In my app.js, i tried to use getViewStrategy() method to control which views i will render as following:
+
+    activate(params, routeConfig, navigationInstruction){
+        this.navigationInstruction = navigationInstruction;
+        //console.log("params", params); // undefined
+        //console.log("routeConfig", routeConfig); // undefined
+        //console.log("navigationInstruction", navigationInstruction); // undefined
+        //console.log("router", router); //undefined
+    }
+    getViewStrategy(){
+        if(this.navigationInstruction == 'login'){
+            return "app_login.html";
+        } else {
+            return "app.html";
+        }
+    }
+
+in the code above, 'navigationInstruction' is undefined. Therefore, my solution cannot work well. Does anybody have another solution? Thanks so much!
+
+##### Answer 
+
+Great question. In fact, when you have two totally sections of the same single page application, the right thing to do is create multiple root view models, or shells.
+
+First, set your app up for custom initialization by adding ``aurelia-app="main"`` to your body tag, and creating a new initialization file correspondingly named ``main.js``. It should look like this.  
+
+    export function configure(aurelia) {
+      aurelia.use
+        .standardConfiguration()
+        .developmentLogging();
+
+      // notice that we are setting root to 'login'
+      aurelia.start().then(app => app.setRoot('login'));
+    }
+
+The ``app.setRoot('login')`` line tells Aurelia to load a file called ``login.js`` as the app root. This file should look similar to your current ``app.js``. You can do anything you want in this file and it's corresponding view, and it will stay totally separate from your main app.
+
+To navigate back to your main app, you'll need to call ``app.setRoot('app')``, which means you'll need to inject the Aurelia object into your Login view model.
+
+    import { inject, Aurelia } from 'aurelia-framework';
+
+    @inject(Aurelia)
+    export class Login {
+      constructor(aurelia) {
+        this.aurelia = aurelia;
+      }
+      goToApp() {
+        this.aurelia.setRoot('app');
+      }
+    }
+
+Answer provided by [Matthew James Davis](http://stackoverflow.com/users/1981050/matthew-james-davis) - see the full write-up here: [Aurelia Login Best Practices](http://www.foursails.co/blog/aurelia-login-best-practices-pt-1/)
