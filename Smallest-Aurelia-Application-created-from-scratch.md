@@ -1,10 +1,16 @@
-This article is credited to **[Scott Allen](http://odetocode.com/about/scott-allen)** and **[Jeremy Danyow](http://www.danyow.net/)** - they both taught me how to use [jspm package manager](http://jspm.io/) to create the &quot;Hello World size&quot; Aurelia application. I want to include it in Aurelia-Guides repository so we can use it as a basic building block in the larger samples.
+####Summary
+The purpose of this article is to create the smallest possible context to show perhaps the coolest feature of Aurelia, described as
+> In Aurelia, user interface elements are composed of view and view-model pairs. The view is written with HTML and is rendered into the DOM. The view-model is written with JavaScript and provides data and behavior to the view. The templating engine and/or DI are responsible for creating these pairs and enforcing a predictable lifecycle for the process. Once instantiated, Aurelia's powerful databinding links the two pieces together allowing changes in your data to be reflected in the view and vice versa. This Separation of Concerns is great for developer/designer collaboration, maintainability, architectural flexibility, and even source control.
+
+Once this context is created - the actual application consists of two files ``app.html``, referred to as the **view** and ``app.js`` called **view-model**. This is the smallest Aurelia app, mentioned in the title of this post
+
+_This article is credited to **[Scott Allen](http://odetocode.com/about/scott-allen)** and **[Jeremy Danyow](http://www.danyow.net/)** - they both taught me how to use [jspm package manager](http://jspm.io/) to create the &quot;Hello World size&quot; Aurelia application. I want to include it in Aurelia-Guides repository so we can use it as a basic building block in the larger samples._
 
 **Caveat**: This approach to to create Aurelia Application is not &quot;scholarly&quot; as it skips creation and use of many important parts of application&#39;s rigging - see **[starter kit for building a standard navigation-style app with Aurelia](https://github.com/aurelia/skeleton-navigation)** for all these details.
 
 * * *
 
-Assuming that all components of Aurelia Development Environment (see **[this](http://blog.aurelia-guides.com/2015/08/22/aurelia-develo…ment-and-tools/)** for more details) are in place, create the folder for this project:
+Assuming that all components of Aurelia Development Environment (see **[this](http://blog.aurelia-guides.com/2015/08/22/aurelia-development-environment-and-tools/)** for more details) are in place, create the folder for this project:
 
     mkdir minimal
     cd minimal
@@ -107,7 +113,7 @@ By default, Aurelia Boostrap loader (``aurelia-bootstrapper``) expects the view 
 
 This is really everything needed for the minimal Aurelia application - however in order to be compliant with "official Aurelia samples", we will also use two utilities
 
-    npm install gulp
+    npm install gulp --save-dev
     npm install browser-sync --save-dev
 
 and provide the ``gulpfile.js``
@@ -132,7 +138,7 @@ and provide the ``gulpfile.js``
       }, done);
     });
 
-Now, start the webserver using ``gulp``
+Now, start the web server using ``gulp``
 
     gulp serve
 
@@ -140,10 +146,17 @@ and point the browser:
 
     http://localhost:9000
 
+you should see this:
+
+<p align=center>
+  <img src="http://i.imgur.com/gPifv0X.png"></img>
+</p>
+
  The complete project's structure is this:
 
 <p align=center>
   <img src="http://i.imgur.com/Gpgy5G8.png"></img>
 </p>
+
 
 **Note** due to its simplicity, this app will be used in several other articles where the accent is not on the Aurelia application but rather on how can Aurelia application connect to various services of interest.
