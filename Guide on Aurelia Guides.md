@@ -48,17 +48,16 @@ Any question - please create an issue **[here][6]**
 
 ### Adding code snippets
 
-There will be two ways to add a post to Aurelia Blogs
 
-1.  By manually logging into Aurelia Guide
-2.  Using the Snippet Manager Just click on the appropriate links to install the extension for you browser.
+You will be adding code snippets to Aurelia Guides using the Snippet Manager plugin called ScribeFire
+
+First credit goes to the great folks at [SribeFire][9] who made the plugin!
+
+To use ScribeFire, just click on the appropriate links to install the extension for you browser.
 
 [Chrome][7]
 
 [Opera][8]
-
-This article will focus on installing and using the Snippet Manager.
-First credit goes to the great folks at [SribeFire][9] who made the plugin!
 
 *Note:* At this time it does not work in Firefox and I do not have a mac to test on [Safari][10] but if anyone wants to test on [Safari][10] and give us feedback that would be great.
 
