@@ -23,7 +23,7 @@ The beginning of your request for contribution is well known to any Github user:
 **Step 1** Clone the repository
 
 **Step 2** Add your own article (probably starting with the article summary like [this one][3]):
- 
+Â 
 
 Testing is an integral part of any modern web application. A write-up on testing every aspect of Aurelia from A-Z would undeniably be super helpful for newcomers as well as helping expose users of Aurelia to various aspects (not limited to unit testing).
 
@@ -32,7 +32,7 @@ A nicely broken up post on testing from ViewModels, to Custom Elements and Attri
     **Dwayne Charrington** (Vheissu) is authoring this post.
 
 
- 
+Â 
 
 **Step 3** Create the **[PR][4]** which will be processed by the site owner (@adriatic and @delebash initially)
 
@@ -68,13 +68,20 @@ This is for the Chrome extension but should be the same for Opera and Safari if 
 
 **Step 1** Install plugin for [Chrome][7]
 
-**Step 2** ScribeFire(Snippet Manager) will be added to Chromes Extension bar in the upper right corner [<img src="http://blog.aurelia-guides.com/wp-content/uploads/2015/08/2015-08-29_00-45-38.png" alt="2015-08-29_00-45-38" width="40" height="31" class="alignnone size-full wp-image-283" />][11]
+**Step 2** ScribeFire(Snippet Manager) will be added to Chromes Extension bar in the upper right corner 
 
-**Step 3** Click on the ScribeFire button to launch. Close the Welcome window, you will only see this once. [<img src="http://blog.aurelia-guides.com/wp-content/uploads/2015/08/2015-08-29_01-30-27-300x142.png" alt="2015-08-29_01-30-27" width="300" height="142" class="alignnone size-medium wp-image-290" />][12]
+[<img src="http://blog.aurelia-guides.com/wp-content/uploads/2015/08/2015-08-29_00-45-38.png" alt="2015-08-29_00-45-38" width="40" height="31" class="alignnone size-full wp-image-283" />][11]
 
-**Step 4** In the upper left corner to the right of Blog click on the link that says Add a New Blog [<img src="http://blog.aurelia-guides.com/wp-content/uploads/2015/08/2015-08-29_01-31-12.png" alt="2015-08-29_01-31-12" width="299" height="64" class="alignnone size-full wp-image-291" />][13]
+**Step 3** Click on the ScribeFire button to launch. Close the Welcome window, you will only see this once. 
+
+[<img src="http://blog.aurelia-guides.com/wp-content/uploads/2015/08/2015-08-29_01-30-27-300x142.png" alt="2015-08-29_01-30-27" width="300" height="142" class="alignnone size-medium wp-image-290" />][12]
+
+**Step 4** In the upper left corner to the right of Blog click on the link that says Add a New Blog 
+
+[<img src="http://blog.aurelia-guides.com/wp-content/uploads/2015/08/2015-08-29_01-31-12.png" alt="2015-08-29_01-31-12" width="299" height="64" class="alignnone size-full wp-image-291" />][13]
 
 **Step 5** Type or paste ttp://collector.aurelia-guides.com/ into the URL box
+
 [<img src="http://blog.aurelia-guides.com/wp-content/uploads/2015/08/2015-08-29_01-37-09-300x199.png" alt="2015-08-29_01-37-09" width="300" height="199" class="alignnone size-medium wp-image-292" />][14]
 
 **Step 6** Click next (Make sure you click the next button in the Url Dialog box before entering the username and password.
