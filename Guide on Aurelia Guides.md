@@ -74,7 +74,8 @@ This is for the Chrome extension but should be the same for Opera and Safari if 
 
 **Step 4** In the upper left corner to the right of Blog click on the link that says Add a New Blog [<img src="http://blog.aurelia-guides.com/wp-content/uploads/2015/08/2015-08-29_01-31-12.png" alt="2015-08-29_01-31-12" width="299" height="64" class="alignnone size-full wp-image-291" />][13]
 
-**Step 5** Type or paste ttp://collector.aurelia-guides.com/ into the URL box[<img src="http://blog.aurelia-guides.com/wp-content/uploads/2015/08/2015-08-29_01-37-09-300x199.png" alt="2015-08-29_01-37-09" width="300" height="199" class="alignnone size-medium wp-image-292" />][14]
+**Step 5** Type or paste ttp://collector.aurelia-guides.com/ into the URL box
+[<img src="http://blog.aurelia-guides.com/wp-content/uploads/2015/08/2015-08-29_01-37-09-300x199.png" alt="2015-08-29_01-37-09" width="300" height="199" class="alignnone size-medium wp-image-292" />][14]
 
 **Step 6** Click next (Make sure you click the next button in the Url Dialog box before entering the username and password.
 
