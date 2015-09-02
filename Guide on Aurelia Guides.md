@@ -81,7 +81,7 @@ This is for the Chrome extension but should be the same for Opera and Safari if 
 
 **Step 5** Type or paste http://collector.aurelia-guides.com/ into the URL box
 
-[<img src="http://blog.aurelia-guides.com/wp-content/uploads/2015/08/2015-08-29_01-37-09-300x199.png" alt="2015-08-29_01-37-09" width="300" height="199" class="alignnone size-medium wp-image-292" />][14]
+<a href="http://blog.aurelia-guides.com/wp-content/uploads/2015/08/2015-08-30_18-31-471.png"><img src="http://blog.aurelia-guides.com/wp-content/uploads/2015/08/2015-08-30_18-31-471-300x200.png" alt="2015-08-30_18-31-47" width="300" height="200" class="alignnone size-medium wp-image-351" /></a>
 
 **Step 6** Click next (Make sure you click the next button in the Url Dialog box before entering the username and password.
 
